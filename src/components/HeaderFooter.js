@@ -26,12 +26,6 @@ const HeaderFooter = () => {
 	const [loginPassword, setLoginPassword] = useState();
 
 	useEffect(() => {
-		if (width > 799) {
-			setMenu(menuIcon);
-		}
-	}, [width])
-
-	useEffect(() => {
 		if (!user) return setCartItemsAmmount(0);
 		const unsubscribe = onSnapshot(collection(db, 'users', user.uid, 'cart'), (collection) => {
 			const ammount = collection.docs.reduce((pV, cV) => pV + cV.data()['ammount'], 0);
@@ -173,7 +167,7 @@ const HeaderFooter = () => {
 						<img src={cartIcon} alt="cart"/>
 					</figure>
 					{menu === menuExitIcon ? 
-						<nav id='popup'>
+						<nav id='popup' style={{padding: '8rem 0'}}>
 							{Object.keys(text).map((elem, index) => <Category key={index} category={elem} image={text[elem].icon} clicked={closingMenuPopup}/>)}
 							<div id='logout'>
 								<button onClick={logout}>LOG OUT</button>
@@ -183,7 +177,12 @@ const HeaderFooter = () => {
 						null}
 				</header> :
 				<header onClick={closingCartPopup}>
-				<Link to={'/'}><img src={logo} alt="logo" onClick={closingMenuPopup}/></Link>
+				<div>
+					<figure id='menu' onClick={menuIconChange}>
+							<img src={menu} alt="menu button"/>
+					</figure>
+					<Link to={'/'}><img src={logo} alt="logo" onClick={closingMenuPopup}/></Link>
+				</div>
 				<nav>
 					<li onClick={() => {closingMenuPopup(); window.scroll('top', 'top')}}><Link to={'/'}>HOME</Link></li>
 					<li onClick={() => {closingMenuPopup(); window.scroll('top', 'top')}}><Link to={'/headphones'}>HEADPHONES</Link></li>
@@ -194,8 +193,8 @@ const HeaderFooter = () => {
 					<img src={cartIcon} alt="cart"/>
 				</figure>
 				{menu === menuExitIcon ? 
-					<nav id='popup'>
-						{Object.keys(text).map((elem, index) => <Category key={index} category={elem} image={text[elem].icon} clicked={closingMenuPopup}/>)}
+					<nav id='popup' style={{padding: '4rem'}}>
+						{width < 800 ? Object.keys(text).map((elem, index) => <Category key={index} category={elem} image={text[elem].icon} clicked={closingMenuPopup}/>) : null}
 						<div id='logout'>
 							<button onClick={logout}>LOG OUT</button>
 							<button onClick={deleteAccount}>DELETE ACCOUNT</button>

@@ -27,7 +27,7 @@ img {
 	user-select: none;
 }
 
-header, header a, header nav, address, #arrow, figure, #orders, #orders menu, #in_the_box > div, .input > div, .select, #cash, #remove_all, #cart_item, #cart_popup > ul, #cart_item > menu, #total {
+header, header a, header nav, address, #arrow, figure, #orders, #orders menu, #in_the_box > div, .input > div, .select, #cash, #remove_all, #cart_item, #cart_popup > ul, #cart_item > menu, #total, header > div {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -65,6 +65,10 @@ header {
 	padding: 3.5rem 2.5rem;
 	background-color: #191919;
 	border-bottom: 1px solid #FFFFFF1A;
+}
+
+header > div {
+	gap: 3rem;
 }
 
 #menu {
@@ -138,7 +142,7 @@ main > *:not(#new_product), #new_product > * {
 }
 
 .about_us  * {
-	transition: all 2s;
+	transition: opacity 2s;
 	max-width: 100%;
 }
 
@@ -195,7 +199,7 @@ footer nav {
 
 footer li {
 	color: white;
-	transition: .3s all;
+	transition: color .3s;
 }
 
 footer li:hover {
@@ -269,6 +273,11 @@ svg:hover {
 	font-size: 1.4rem;
 	color: rgb(0 0 0 / 50%);
 	font-weight: 700;
+	transition: color .3s;
+}
+
+#arrow > p:hover {
+	color: #d87d4a;
 }
 
 @keyframes opac {
@@ -346,7 +355,7 @@ svg:hover {
 #products > * {
 	width: 100%;
 	border-radius: 1rem;
-	transition: all 1s;
+	transition: opacity 1s;
 }
 
 #products > div {
@@ -354,7 +363,7 @@ svg:hover {
 }
 
 #products > div:last-of-type > * {
-	transition: all 1s;
+	transition: opacity 1s;
 }
 
 #products button {
@@ -668,7 +677,7 @@ svg:hover {
 	padding: 2rem 1.5rem;
 	border-radius: 1rem;
 	border: 1px solid #cfcfcf;
-	transition: all .2s;
+	transition: outline .2s;
 	max-height: 5.5rem;
 }
 #password::placeholder {
@@ -769,14 +778,13 @@ label {
 
 #popup {
 	gap: 6rem;
-	padding: 8rem 0;
 	min-width: 100%;
 	background-color: #fff;
 	position: absolute;
 	top: 100%;
 	left: 0;
 	z-index: 2;
-	box-shadow: 0rem calc(9999vmax + 10rem) 0rem 9999vmax #19191996;
+	box-shadow: 0rem 9999vmax 0rem 9999vmax #19191996;
 }
 
 #popup > * {
@@ -855,7 +863,7 @@ label {
 	font-size: 1.3rem;
 	font-weight: 700;
 	padding: 1em 0;
-	transition: .3s all;
+	transition: background-color .3s ;
 } 
 
 #cart_popup button:hover {
@@ -876,7 +884,7 @@ label {
 	color: #d87d4a;
 	font-weight: 700;
 	cursor: pointer;
-	transition: .3s all;
+	transition: .3s background-color;
 }
 
 #login_signup > p:last-of-type:hover {
@@ -894,7 +902,7 @@ label {
 	border-radius: 1rem;
 	background-color: #d87d4a;
 	padding: 1em 2em;
-	transition: all .3s;
+	transition: background-color .3s;
 }
 
 #logout > button:first-of-type:hover {
@@ -1313,6 +1321,16 @@ label {
 	}
 
 	.input input {
+		min-width: 100%;
+	}
+
+	#popup {
+		min-width: fit-content;
+		border-radius: 0 0 1rem 0;
+	}
+
+	#logout {
+		align-items: flex-start;
 		min-width: 100%;
 	}
 }

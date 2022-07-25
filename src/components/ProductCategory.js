@@ -17,7 +17,7 @@ const ProductCategory = ({ category }) => {
 		} else {
 			document.querySelector('main').classList.add('ProductCategory_main_styling');
 		};
-	}, []);
+	});
 	return (
 		<>
 			<CategoryHeading heading={category}/>
